@@ -1,0 +1,30 @@
+26a27,30
+> 		# 2. Handling of Guesses Longer or Shorter than the Answer
+> 		if len(new_word) != len(self.answer):
+> 			return "Invalid word length"
+> 
+33a38,39
+> 
+> 		# First pass for greens
+37,38c43
+< 			elif char in deep_copy_counts and deep_copy_counts[char] > 0:
+< 				res.append("Y")
+---
+> 				deep_copy_counts[char] -= 1
+40,41c45
+< 				res.append("W")
+< 			deep_copy_counts[char] -= 1
+---
+> 				res.append(None)  # Placeholder for non-green characters
+42a47,55
+> 		# Second pass for yellows and wrongs
+> 		for i, char in enumerate(new_word):
+> 			if res[i] is None:  # Only process if not already marked as green
+> 				if char in deep_copy_counts and deep_copy_counts[char] > 0:
+> 					res[i] = "Y"
+> 					deep_copy_counts[char] -= 1
+> 				else:
+> 					res[i] = "W"
+> 
+43a57
+> 
