@@ -29,6 +29,17 @@ class TestWordleGame:
 		result = game.check_new_word("ANGER")
 		assert result == "Game is Over", "Expected result: 'Game is Over', Actual result: {}".format(result)
 
+	def test_word_double_letter_words_where_the_match_is_in_the_second_letter(self):  # This test case fails in the original implementation
+		game = WordleGame("APPLE")
+		result = game.check_new_word("HELLO")
+		print("The result is: ", result)
+		assert result == "WWYGW", "Expected result: 'WWYGW', Actual result: {}".format(result)
+
+	def test_word_double_letter_words_where_the_match_is_in_the_second_letter_2(self):
+		game = WordleGame("APPLE")
+		result = game.check_new_word("HEOLL")
+		assert result == "WYWGW", "Expected result: 'WYWGW', Actual result: {}".format(result)
+
 	# The following 2 test cases were not handled in the original code
 	# def test_negative_word_is_longer(self):
 	# 	game = WordleGame("APPLE")

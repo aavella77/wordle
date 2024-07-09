@@ -54,3 +54,14 @@ class TestWordleGameRevisedCode:
 		game = WordleGame("APPLE")
 		result = game.check_new_word("PPPPP")
 		assert result == "WGGWW", "Expected result: 'WGGWW', Actual result: {}".format(result)
+
+	# Testing for the scenario that was failing in the original implementation
+	def test_word_double_letter_words_where_the_match_is_in_the_second_letter(self):
+		game = WordleGame("APPLE")
+		result = game.check_new_word("HELLO")
+		assert result == "WYWGW", "Expected result: 'WYWGW', Actual result: {}".format(result)
+
+	def test_word_double_letter_words_where_the_match_is_in_the_second_letter_2(self):
+		game = WordleGame("APPLE")
+		result = game.check_new_word("HEOLL")
+		assert result == "WYWGW", "Expected result: 'WYWGW', Actual result: {}".format(result)
